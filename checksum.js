@@ -18,6 +18,7 @@ var crypto = require('crypto')
 
 module.exports = checksum
 checksum.file = checksumFile
+checksum.filepromise = checkSumFilePromise
 
 /**
  * Checksum
@@ -88,5 +89,20 @@ function checksumFile (filename, options, callback) {
       })
 
     }
+  })
+}
+
+/*
+  promise wrapper for checksumfile
+*/
+function checkSumFilePromise(filename, options) {
+  return new Promise((resolve, reject) => {
+    checksumfile(filename, options, function response(err, sum) {
+      if (err) {
+        reject(err)
+      } else {
+        resolve(sum)
+      }
+    })
   })
 }
