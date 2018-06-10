@@ -11,8 +11,11 @@ test('checksum', function (t) {
 })
 
 test('checksum.file', function (t) {
-  t.plan(3)
+  t.plan(4)
   checksum.file('./fixtures/dshaw.txt', function (err, sum) {
+    t.equal(sum, '9b8cebc0421241d087f6ab7e815285af803de7e7', 'text file checksum')
+  })
+  checksum.filepromise('./fixtures/dshaw.txt').then((sum)=>{
     t.equal(sum, '9b8cebc0421241d087f6ab7e815285af803de7e7', 'text file checksum')
   })
   checksum.file('./fixtures/1px.gif', function (err, sum) {

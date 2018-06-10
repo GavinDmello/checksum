@@ -97,7 +97,7 @@ function checksumFile (filename, options, callback) {
 */
 function checkSumFilePromise(filename, options) {
   return new Promise((resolve, reject) => {
-    checksumfile(filename, options, function response(err, sum) {
+    checksumFile(filename, options, function response(err, sum) {
       if (err) {
         reject(err)
       } else {
